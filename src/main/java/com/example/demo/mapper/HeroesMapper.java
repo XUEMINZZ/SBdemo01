@@ -1,9 +1,10 @@
 package com.example.demo.mapper;
 
-import com.example.demo.entity.Heroes;
+import com.example.demo.entity.Hero;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HeroesMapper {
-    Heroes selHero(int id);
+    Hero selHero(int id);
+    Hero selHeroRandom(int id);
 }

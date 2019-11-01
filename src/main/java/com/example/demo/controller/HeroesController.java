@@ -15,4 +15,6 @@ public class HeroesController {
     public String getHeroes(@PathVariable int id){
         return  heroesService.selHero(id).toString();
     }
-}
+
+    }
+
