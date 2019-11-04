@@ -2,8 +2,10 @@ package com.example.demo.controller;
 
 import java.util.Iterator;
 
+import ch.qos.logback.core.joran.conditional.ElseAction;
 import com.example.demo.entity.Hero;
-import com.example.demo.service.HeroesService;
+import com.example.demo.service.HeroService;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,26 +14,28 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/random")
-public class RandomHero {
+public class RandomHeroController {
     @Autowired
-    HeroesService heroesServiceR;
+    HeroService heroServiceR;
 
     @RequestMapping("hero")
-    public Hero[] getRandomHero() {
+    public List<Hero> getRandomHero() {
         Random ran = new Random();
         Set<Integer> set = new HashSet<Integer>();
-        while (set.size() !=5) {
+        while (set.size() != 5) {
             int i = ran.nextInt(40) + 1;
             set.add(i);
         }
         Iterator<Integer> it = set.iterator();
-       Hero[] heroID = new Hero[set.size()];
+        List<Hero> heroList = new ArrayList<>(set.size());
 
-           for (int i = 0; i < set.size() ; i++) {
-               heroID[i] = heroesServiceR.selHeroRandom(it.next());
-           }
+        while (it.hasNext()) {
+            heroList.add(heroServiceR.selHeroRandom(it.next()));
+        }
 
-        return  heroID;
+        return heroList;
+
     }
+
 
 }

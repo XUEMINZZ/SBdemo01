@@ -1,21 +1,21 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Hero;
-import com.example.demo.mapper.HeroesMapper;
+import com.example.demo.mapper.HeroMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class HeroesService {
+public class HeroService {
     @Autowired
-    HeroesMapper heroesMapper;
+    HeroMapper heroMapper;
     @Autowired
-    HeroesMapper heroesMapperR;
+    HeroMapper heroMapperR;
     public Hero selHero(int id){
-        return heroesMapper.selHero(id);
+        return heroMapper.selHero(id);
     }
 
     public Hero selHeroRandom(int id){
-        return heroesMapperR.selHeroRandom(id);
+        return heroMapperR.selHeroRandom(id);
     }
 }
