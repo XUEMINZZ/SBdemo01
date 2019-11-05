@@ -5,6 +5,8 @@ import com.example.demo.mapper.HeroMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HeroService {
     @Autowired
@@ -15,7 +17,7 @@ public class HeroService {
         return heroMapper.selHero(id);
     }
 
-    public Hero selHeroRandom(int id){
-        return heroMapperR.selHeroRandom(id);
+    public List<Hero> selHeroRandom(List<Integer> idList){
+        return heroMapperR.selHeroRandom(idList);
     }
 }

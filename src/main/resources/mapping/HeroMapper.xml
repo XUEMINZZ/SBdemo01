@@ -12,7 +12,12 @@
         select * from heroes where id = #{id}
     </select>
     <select id="selHeroRandom" resultType="com.example.demo.entity.Hero">
-        select * from heroes where id =#{id}
+        select
+             *   from heroes
+        where id in
+        <foreach collection="list" item="id" index="index" open="(" close=")" separator=",">
+        #{id}
+        </foreach>
     </select>
 
 </mapper>
